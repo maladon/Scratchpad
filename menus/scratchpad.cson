@@ -1,0 +1,16 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Enable scratchpad': 'scratchpad:toggle'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'scratchpad'
+      'submenu': [
+        { 'label': 'Toggle', 'command': 'scratchpad:toggle' }
+      ]
+    ]
+  }
+]
