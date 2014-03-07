@@ -1,4 +1,4 @@
-{View} = require 'atom'
+{$, View, Range} = require 'atom'
 
 module.exports =
 class ScratchpadView extends View
@@ -11,7 +11,8 @@ class ScratchpadView extends View
 
   constructor: (content) ->
     super
-    @padContent.val(content.padContent)
+    if content
+      @padContent.val(content.padContent)
 
   initialize: (serializeState) ->
     atom.workspaceView.command "scratchpad:toggle", => @toggle()
@@ -28,6 +29,9 @@ class ScratchpadView extends View
 
   toggle: ->
     if @hasParent()
+      @editor.focus()
       @detach()
     else
+      @editor = atom.workspaceView.find('.editor.is-focused')
       atom.workspaceView.append(this)
+      @padContent.focus()
