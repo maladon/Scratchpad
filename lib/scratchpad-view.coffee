@@ -6,7 +6,10 @@ class ScratchpadView extends View
     rows = atom.config.get "scratchpad.rows"
     rows = 30 if not rows?
 
-    @div id: 'scratchpadContainer', class: 'scratchpad overlay from-top', =>
+    opacity = atom.config.get "scratchpad.opacity"
+    opacity = 1 if not opacity?
+
+    @div id: 'scratchpadContainer', class: 'scratchpad overlay from-top', style: "opacity: #{opacity}", =>
       @textarea outlet: 'padContent', class: 'native-key-bindings', rows: rows
 
   constructor: (content) ->
