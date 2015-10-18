@@ -1,4 +1,5 @@
-{$, View, Range} = require 'atom'
+{$, View, Range} = require 'atom-space-pen-views'
+{Range, CompositeDisposable} = require 'atom'
 
 module.exports =
 class ScratchpadView extends View
@@ -18,7 +19,9 @@ class ScratchpadView extends View
       @padContent.val(content.padContent)
 
   initialize: (serializeState) ->
-    atom.workspaceView.command "scratchpad:toggle", => @toggle()
+    @workspace = $('atom-workspace')
+    @subscriptions = new CompositeDisposable
+    @subscriptions.add atom.commands.add 'atom-workspace', "scratchpad:toggle", => @toggle()
 
   serialize: ->
     {
@@ -28,13 +31,13 @@ class ScratchpadView extends View
 
   # Tear down any state and detach
   destroy: ->
+    @subscriptions?.dispose()
     @detach()
 
   toggle: ->
     if @hasParent()
-      @editor.focus()
+      @workspace.focus()
       @detach()
     else
-      @editor = atom.workspaceView.find('.editor.is-focused')
-      atom.workspaceView.append(this)
+      @workspace.append(this)
       @padContent.focus()
