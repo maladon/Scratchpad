@@ -18,3 +18,7 @@ sightly transparent. Opacity must be a value between 0 and 1.
 Scratchpad is simply an HTML textarea element, allowing it to easily be resized
 to your needs. Additionally, Scratchpad's is persistent, meaning notes will
 stay in Scratchpad until explicitly deleted.
+
+## No longer maintained!
+
+I am no longer an Atom user and generally don't have time to maintain this project (even though it is small). I'm happy to merge pull requests and update the package, but as a user, I wouldn't expect a lot of support here. If you are interested in taking ownership of this project, feel free to message me.
