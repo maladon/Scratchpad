@@ -7,7 +7,7 @@
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'scratchpad'
+      'label': 'Scratchpad'
       'submenu': [
         { 'label': 'Toggle', 'command': 'scratchpad:toggle' }
       ]
